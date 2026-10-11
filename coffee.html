@@ -5,7 +5,7 @@
 <style>
 :root{--bg:#f6efe6;--fg:#2b1d14;--muted:#7a6656;--accent:#b5562b;--card:#fffaf3;--line:#e3d5c4;color-scheme:light}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Manrope",system-ui,sans-serif;padding:0 20px}
-html{touch-action:manipulation}a,button{-webkit-tap-highlight-color:transparent}.btn{transition:filter .15s,transform .15s}.btn:hover{filter:brightness(1.1)}.btn:active{transform:translateY(1px)}nav a:hover{color:var(--accent)}a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+html{touch-action:manipulation}a,button{-webkit-tap-highlight-color:transparent}a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 .w{max-width:980px;margin:0 auto;padding-block:24px 56px;display:grid;gap:56px}
 nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 nav b{font:600 1.4rem "Fraunces",serif}nav a{color:var(--fg);margin-left:16px;text-decoration:none}
@@ -18,9 +18,21 @@ h1{font-size:clamp(2.2rem,7vw,4.2rem);max-width:13ch}h2{font-size:1.8rem}
 .item small{display:block;color:var(--muted)}.item span{font-variant-numeric:tabular-nums;white-space:nowrap}
 .info{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;background:var(--card);padding:28px;border-radius:16px}
 .info p{margin:4px 0 0;color:var(--muted)}
+/* motion: emil-design-eng */
+:root{--ease-out:cubic-bezier(0.23,1,0.32,1);--ease-in-out:cubic-bezier(0.77,0,0.175,1)}
+.btn,button,.work{transition:transform 160ms var(--ease-out),filter 160ms ease,background-color 160ms ease,color 160ms ease}
+.btn:active,button:active{transform:scale(0.97)}
+@media (hover:hover) and (pointer:fine){.btn:hover{filter:brightness(1.1)}nav a:hover{opacity:.7}}
+.rise{animation:rise 420ms var(--ease-out) both}
+.rise:nth-child(2){animation-delay:60ms}.rise:nth-child(3){animation-delay:120ms}.rise:nth-child(4){animation-delay:180ms}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+[role="status"]{transition:opacity 200ms ease,transform 200ms var(--ease-out)}
+@starting-style{[role="status"]{opacity:0;transform:translateY(4px)}}
+@media (prefers-reduced-motion:reduce){.btn,button,.work,[role="status"]{transition:opacity 150ms ease,color 150ms ease}.btn:active,button:active{transform:none}.rise{animation:fade 200ms ease both}@keyframes fade{from{opacity:0}}}
+
 </style></head><body><div class="w">
 <nav><b>Зерно</b><div><a href="#menu">Меню</a><a href="#info">Контакты</a></div></nav>
-<section class="hero"><h1>Кофе, ради которого стоит проснуться</h1><p>Обжариваем зерно сами каждую неделю. Завтраки до 12:00, тихий зал для работы и розетки у каждого столика.</p><a class="btn" href="#info">Забронировать столик</a></section>
+<section class="hero"><h1 class="rise">Кофе, ради которого стоит проснуться</h1><p>Обжариваем зерно сами каждую неделю. Завтраки до 12:00, тихий зал для работы и розетки у каждого столика.</p><a class="btn" href="#info">Забронировать столик</a></section>
 <section style="display:grid;gap:12px"><h2>О нас</h2><p style="margin:0;color:var(--muted);max-width:60ch">«Зерно» открылось в 2021 году как маленький кофейный бар на 8 мест. Сегодня у нас 40 мест, своя обжарка и постоянные гости, которые приходят каждое утро.</p></section>
 <section id="menu" style="display:grid;gap:20px"><h2>Меню</h2><div class="menu">
 <div class="item"><div>Эспрессо<small>30 мл, Бразилия Сантос</small></div><span>900 ₸</span></div>

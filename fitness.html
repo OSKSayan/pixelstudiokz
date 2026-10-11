@@ -5,7 +5,7 @@
 <style>
 :root{--bg:#fbfcf5;--fg:#14210a;--muted:#55604a;--lime:#d8f05a;--dark:#14210a;--line:#e1e6cf;color-scheme:light}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Archivo",system-ui,sans-serif;padding:0 20px}
-html{touch-action:manipulation}a,button,input,select{-webkit-tap-highlight-color:transparent}.btn{transition:filter .15s,transform .15s}.btn:hover{filter:brightness(1.25)}.btn:active{transform:translateY(1px)}.tabs button:hover:not([aria-current]){background:var(--line)}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--dark);outline-offset:3px}@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+html{touch-action:manipulation}a,button,input,select{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--dark);outline-offset:3px}
 [hidden]{display:none!important}
 .w{max-width:1000px;margin:0 auto;padding-block:20px 56px;display:grid;gap:48px}
 nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-weight:600;border-bottom:1px solid var(--line);padding-bottom:16px}
@@ -24,11 +24,23 @@ h1{font-size:clamp(2.6rem,9vw,5.4rem)}h1 mark{background:var(--lime);color:var(-
 .ba:nth-child(even){background:linear-gradient(160deg,var(--dark),#3c5420);color:var(--lime)}
 blockquote{margin:0;border-left:4px solid var(--lime);padding:4px 0 4px 20px;font-size:1.1rem}blockquote cite{display:block;color:var(--muted);font-style:normal;font-size:.95rem;margin-top:8px}
 form{display:grid;gap:12px;max-width:440px}input,select{padding:14px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff;color:var(--fg)}
+/* motion: emil-design-eng */
+:root{--ease-out:cubic-bezier(0.23,1,0.32,1);--ease-in-out:cubic-bezier(0.77,0,0.175,1)}
+.btn,button,.work{transition:transform 160ms var(--ease-out),filter 160ms ease,background-color 160ms ease,color 160ms ease}
+.btn:active,button:active{transform:scale(0.97)}
+@media (hover:hover) and (pointer:fine){.btn:hover{filter:brightness(1.1)}nav a:hover{opacity:.7}}
+.rise{animation:rise 420ms var(--ease-out) both}
+.rise:nth-child(2){animation-delay:60ms}.rise:nth-child(3){animation-delay:120ms}.rise:nth-child(4){animation-delay:180ms}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+[role="status"]{transition:opacity 200ms ease,transform 200ms var(--ease-out)}
+@starting-style{[role="status"]{opacity:0;transform:translateY(4px)}}
+@media (prefers-reduced-motion:reduce){.btn,button,.work,[role="status"]{transition:opacity 150ms ease,color 150ms ease}.btn:active,button:active{transform:none}.rise{animation:fade 200ms ease both}@keyframes fade{from{opacity:0}}}
+@media (hover:hover) and (pointer:fine){.tabs button:hover:not([aria-current]){background:var(--line)}}.page:not([hidden]){animation:rise 260ms var(--ease-out) both}@media (prefers-reduced-motion:reduce){.page:not([hidden]){animation:fade 150ms ease both}}
 </style></head><body><div class="w">
 <nav><span>ДАНА · фитнес</span><div class="tabs" id="tabs">
 <button data-p="home" aria-current="page">Главная</button><button data-p="plans">Программы</button><button data-p="gallery">Результаты</button><button data-p="reviews">Отзывы</button><button data-p="book">Запись</button></div></nav>
 
-<section class="page" id="home"><h1>Минус 5 кг за <mark>8 недель</mark> без голодовок</h1><p class="lead">Персональные тренировки в зале и онлайн. Программа питания под ваш график и еженедельные отчёты в Telegram.</p><button class="btn" data-go="book">Бесплатная консультация</button>
+<section class="page" id="home"><h1 class="rise">Минус 5 кг за <mark>8 недель</mark> без голодовок</h1><p class="lead">Персональные тренировки в зале и онлайн. Программа питания под ваш график и еженедельные отчёты в Telegram.</p><button class="btn" data-go="book">Бесплатная консультация</button>
 <div class="stats"><div><b>6 лет</b><span>тренирую</span></div><div><b>240+</b><span>клиентов</span></div><div><b>4,9</b><span>средняя оценка</span></div></div></section>
 
 <section class="page" id="plans" hidden><h2>Программы</h2><div class="grid">

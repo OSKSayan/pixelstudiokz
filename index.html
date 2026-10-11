@@ -1,4 +1,16 @@
 <!doctype html>
+/* motion: emil-design-eng */
+:root{--ease-out:cubic-bezier(0.23,1,0.32,1);--ease-in-out:cubic-bezier(0.77,0,0.175,1)}
+.btn,button,.work{transition:transform 160ms var(--ease-out),filter 160ms ease,background-color 160ms ease,color 160ms ease}
+.btn:active,button:active{transform:scale(0.97)}
+@media (hover:hover) and (pointer:fine){.btn:hover{filter:brightness(1.1)}nav a:hover{opacity:.7}}
+.rise{animation:rise 420ms var(--ease-out) both}
+.rise:nth-child(2){animation-delay:60ms}.rise:nth-child(3){animation-delay:120ms}.rise:nth-child(4){animation-delay:180ms}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+[role="status"]{transition:opacity 200ms ease,transform 200ms var(--ease-out)}
+@starting-style{[role="status"]{opacity:0;transform:translateY(4px)}}
+@media (prefers-reduced-motion:reduce){.btn,button,.work,[role="status"]{transition:opacity 150ms ease,color 150ms ease}.btn:active,button:active{transform:none}.rise{animation:fade 200ms ease both}@keyframes fade{from{opacity:0}}}
+@media (hover:hover) and (pointer:fine){.work:hover{transform:translateY(-3px)}}.work:active{transform:scale(0.985)}
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f3f5f8" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#0f1219" media="(prefers-color-scheme: dark)"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><style>*{box-sizing:border-box}body{margin:0}</style>
 <title>Pixel Studio</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
@@ -21,12 +33,12 @@ header{display:grid;gap:20px}
 header p{max-width:58ch;color:var(--muted);margin:0;font-size:1.1rem}
 .btn{display:inline-block;background:var(--accent);color:var(--accent-fg);padding:14px 22px;border-radius:10px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font:600 16px var(--body)}
 .btn:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-html{touch-action:manipulation}a,button{-webkit-tap-highlight-color:transparent}.btn:hover{filter:brightness(1.1)}.btn:active{transform:translateY(1px)}
+html{touch-action:manipulation}a,button{-webkit-tap-highlight-color:transparent}
 section{display:grid;gap:24px}
 .works{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-.work{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .2s}
-.work:hover{transform:translateY(-4px)}
-@media (prefers-reduced-motion:reduce){.work{transition:none}.work:hover{transform:none}}
+.work{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+
+
 .bar{display:flex;gap:6px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);font:12px var(--mono);color:var(--muted)}
 .bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
 .bar span{margin-left:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -49,10 +61,10 @@ footer{color:var(--muted);font-size:14px}
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">// сайты для малого бизнеса</div>
-    <h1>Сайт, который приводит <span>клиентов</span>, за 3–7 дней</h1>
-    <p>Делаю лендинги и сайты-визитки для кофеен, барбершопов, тренеров и магазинов. Удобно с телефона, быстро грузится, кнопка «Написать в WhatsApp» на каждом экране.</p>
-    <div class="row"><a class="btn" href="https://t.me/pixelstudiokz" target="_blank" rel="noopener">Написать мне</a></div>
+    <div class="eyebrow rise">// сайты для малого бизнеса</div>
+    <h1 class="rise">Сайт, который приводит <span>клиентов</span>, за 3–7 дней</h1>
+    <p class="rise">Делаю лендинги и сайты-визитки для кофеен, барбершопов, тренеров и магазинов. Удобно с телефона, быстро грузится, кнопка «Написать в WhatsApp» на каждом экране.</p>
+    <div class="row rise"><a class="btn" href="https://t.me/pixelstudiokz" target="_blank" rel="noopener">Написать мне</a></div>
   </header>
 
   <section>

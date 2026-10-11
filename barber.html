@@ -5,7 +5,7 @@
 <style>
 :root{--bg:#121212;--fg:#efe9df;--muted:#9a9386;--gold:#d4a24c;--card:#1c1b19;--line:#2e2c28;color-scheme:dark}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Inter Tight",system-ui,sans-serif;padding:0 20px}
-html{touch-action:manipulation}a,button,input,select{-webkit-tap-highlight-color:transparent}.btn{transition:filter .15s,transform .15s}.btn:hover{filter:brightness(1.12)}.btn:active{transform:translateY(1px)}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:3px}@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+html{touch-action:manipulation}a,button,input,select{-webkit-tap-highlight-color:transparent}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
 .w{max-width:1000px;margin:0 auto;padding-block:24px 56px;display:grid;gap:64px}
 nav{display:flex;justify-content:space-between;align-items:center}nav b{font:700 1.5rem "Oswald",sans-serif;letter-spacing:.12em}
 h1,h2{font-family:"Oswald",Impact,sans-serif;text-transform:uppercase;margin:0;line-height:1.05;text-wrap:balance}
@@ -15,9 +15,21 @@ h1{font-size:clamp(2.6rem,9vw,5.5rem)}h1 em{color:var(--gold);font-style:normal}
 table{width:100%;border-collapse:collapse}td{padding:14px 0;border-bottom:1px solid var(--line)}td:last-child{text-align:right;color:var(--gold);font-variant-numeric:tabular-nums;white-space:nowrap}td small{display:block;color:var(--muted)}
 .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
 .m{background:var(--card);padding:20px;display:grid;gap:4px}.m .ph{height:140px;background:linear-gradient(135deg,#2a2722,#3a342a);margin-bottom:12px;display:grid;place-items:center;font:700 2.5rem "Oswald";color:var(--gold)}.m small{color:var(--muted)}
+/* motion: emil-design-eng */
+:root{--ease-out:cubic-bezier(0.23,1,0.32,1);--ease-in-out:cubic-bezier(0.77,0,0.175,1)}
+.btn,button,.work{transition:transform 160ms var(--ease-out),filter 160ms ease,background-color 160ms ease,color 160ms ease}
+.btn:active,button:active{transform:scale(0.97)}
+@media (hover:hover) and (pointer:fine){.btn:hover{filter:brightness(1.1)}nav a:hover{opacity:.7}}
+.rise{animation:rise 420ms var(--ease-out) both}
+.rise:nth-child(2){animation-delay:60ms}.rise:nth-child(3){animation-delay:120ms}.rise:nth-child(4){animation-delay:180ms}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+[role="status"]{transition:opacity 200ms ease,transform 200ms var(--ease-out)}
+@starting-style{[role="status"]{opacity:0;transform:translateY(4px)}}
+@media (prefers-reduced-motion:reduce){.btn,button,.work,[role="status"]{transition:opacity 150ms ease,color 150ms ease}.btn:active,button:active{transform:none}.rise{animation:fade 200ms ease both}@keyframes fade{from{opacity:0}}}
+
 </style></head><body><div class="w">
 <nav><b>BRITVA</b><a class="btn" href="#book">Записаться</a></nav>
-<section class="hero"><h1>Стрижка, после которой <em>смотрят</em></h1><p>Мужские стрижки, борода и королевское бритьё. Кофе или чай пока ждёте, запись без звонков.</p><a class="btn" href="#book">Выбрать время</a></section>
+<section class="hero"><h1 class="rise">Стрижка, после которой <em>смотрят</em></h1><p>Мужские стрижки, борода и королевское бритьё. Кофе или чай пока ждёте, запись без звонков.</p><a class="btn" href="#book">Выбрать время</a></section>
 <section style="display:grid;gap:16px"><h2>Услуги</h2><table id="services"></table></section>
 <section style="display:grid;gap:16px"><h2>Мастера</h2><div class="team" id="team"></div></section>
 <section style="display:grid;gap:16px"><h2>Отзывы</h2><div class="team">
