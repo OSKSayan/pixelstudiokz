@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>*{box-sizing:border-box}body{margin:0}</style>
+<title>Pixel Studio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: монтажный стол — слева заголовок-тезис, ниже сетка работ как окна браузера, затем цены и контакт */
+:root{
+  --bg:#f3f5f8; --surface:#ffffff; --fg:#14171f; --muted:#5a6272; --line:#d9dee7; --accent:#2f5bff; --accent-fg:#ffffff;
+  --display:"Unbounded",system-ui,sans-serif; --body:"Golos Text",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1219;--surface:#171b25;--fg:#e9ecf3;--muted:#99a1b3;--line:#2a3040;--accent:#6f8cff;--accent-fg:#0f1219;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1219;--surface:#171b25;--fg:#e9ecf3;--muted:#99a1b3;--line:#2a3040;--accent:#6f8cff;--accent-fg:#0f1219;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);padding:0 20px}
+.wrap{max-width:1080px;margin:0 auto;padding-block:40px 64px;display:grid;gap:72px}
+h1,h2{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(2rem,6vw,3.6rem);font-weight:700;max-width:16ch}
+h1 span{color:var(--accent)}
+h2{font-size:1.6rem;font-weight:500}
+.eyebrow{font:13px var(--mono);color:var(--muted);letter-spacing:.04em}
+header{display:grid;gap:20px}
+header p{max-width:58ch;color:var(--muted);margin:0;font-size:1.1rem}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-fg);padding:14px 22px;border-radius:10px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font:600 16px var(--body)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+section{display:grid;gap:24px}
+.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.work{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:transform .2s}
+.work:hover{transform:translateY(-4px)}
+@media (prefers-reduced-motion:reduce){.work{transition:none}.work:hover{transform:none}}
+.bar{display:flex;gap:6px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);font:12px var(--mono);color:var(--muted)}
+.bar i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.bar span{margin-left:8px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.shot{height:170px;display:grid;place-items:center;font-family:var(--display);font-size:1.4rem;padding:16px;text-align:center}
+.s1{background:#3b2a20;color:#f1dcc0}.s2{background:#161616;color:#d4a24c}.s3{background:#d8f05a;color:#14210a}
+.meta{padding:16px;display:grid;gap:4px}
+.meta b{font-weight:600}.meta small{color:var(--muted)}
+.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.price{border-top:2px solid var(--fg);padding-top:16px;display:grid;gap:8px;align-content:start}
+.price .sum{font:500 1.5rem var(--display);font-variant-numeric:tabular-nums}
+.price p{margin:0;color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;padding:0;margin:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;display:grid;gap:6px}
+.steps li::before{content:"шаг " counter(s);font:13px var(--mono);color:var(--accent)}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:32px;display:grid;gap:16px}
+.contact code{font:15px var(--mono);background:var(--bg);padding:10px 14px;border-radius:8px;display:inline-block;user-select:all}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+footer{color:var(--muted);font-size:14px}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">// сайты для малого бизнеса</div>
+    <h1>Сайт, который приводит <span>клиентов</span>, за 3–7 дней</h1>
+    <p>Делаю лендинги и сайты-визитки для кофеен, барбершопов, тренеров и магазинов. Удобно с телефона, быстро грузится, кнопка «Написать в WhatsApp» на каждом экране.</p>
+    <div class="row"><a class="btn" href="https://t.me/pixelstudiokz" target="_blank" rel="noopener">Написать мне</a></div>
+  </header>
+
+  <section>
+    <h2>Примеры работ</h2>
+    <div class="works">
+      <a class="work" href="coffee.html"><div class="bar"><i></i><i></i><i></i><span>zerno-coffee.kz</span></div><div class="shot s1">Зерно<br>кофейня</div><div class="meta"><b>Сайт-визитка · кофейня «Зерно»</b><small>1 страница: о нас, меню, контакты, карта · от 15 000 ₸</small></div></a>
+      <a class="work" href="barber.html"><div class="bar"><i></i><i></i><i></i><span>britva-barber.kz</span></div><div class="shot s2">BRITVA<br>barbershop</div><div class="meta"><b>Лендинг · барбершоп «Бритва»</b><small>Цены, мастера, отзывы, форма записи · от 25 000 ₸</small></div></a>
+      <a class="work" href="fitness.html"><div class="bar"><i></i><i></i><i></i><span>trener-dana.kz</span></div><div class="shot s3">Минус 5 кг<br>за 8 недель</div><div class="meta"><b>Сайт услуг · фитнес-тренер</b><small>5 страниц: программы, результаты, отзывы, запись · от 45 000 ₸</small></div></a>
+    </div>
+    <small class="eyebrow">Это демо-проекты: так может выглядеть ваш сайт.</small>
+  </section>
+
+  <section>
+    <h2>Цены</h2>
+    <div class="prices">
+      <div class="price"><b>Визитка</b><div class="sum">от 15 000 ₸</div><p>1 страница: о вас, услуги, контакты, карта.</p><a href="coffee.html" style="color:var(--accent)">Смотреть пример →</a></div>
+      <div class="price"><b>Лендинг</b><div class="sum">от 25 000 ₸</div><p>Продающая страница с отзывами, ценами и формой заявки.</p><a href="barber.html" style="color:var(--accent)">Смотреть пример →</a></div>
+      <div class="price"><b>Сайт услуг</b><div class="sum">от 45 000 ₸</div><p>До 5 страниц, галерея, запись или каталог.</p><a href="fitness.html" style="color:var(--accent)">Смотреть пример →</a></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Как работаем</h2>
+    <ol class="steps">
+      <li><b>Обсуждаем</b><span>Вы рассказываете о бизнесе, я предлагаю структуру.</span></li>
+      <li><b>Предоплата 50%</b><span>Фиксируем цену и срок.</span></li>
+      <li><b>Делаю и показываю</b><span>Вносим правки, пока всё не понравится.</span></li>
+      <li><b>Запуск</b><span>Оплата остатка, сайт выходит в интернет.</span></li>
+    </ol>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Напишите мне</h2>
+    <p style="margin:0;color:var(--muted)">Отвечаю в течение пары часов. Расскажите, чем занимаетесь, и я скажу цену и срок.</p>
+    <div class="row"><a class="btn" href="https://t.me/pixelstudiokz" target="_blank" rel="noopener">Написать в Telegram</a><code id="handle">@pixelstudiokz</code><button class="btn" id="copy" style="background:var(--bg);color:var(--fg);border:1px solid var(--line)">Скопировать ник</button></div>
+  </section>
+
+  <footer>© 2026 Pixel Studio</footer>
+</div>
+<script>
+document.getElementById('copy').addEventListener('click',e=>{
+  const t=document.getElementById('handle').textContent;
+  navigator.clipboard.writeText(t).then(()=>e.target.textContent='Скопировано').catch(()=>{const r=document.createRange();r.selectNodeContents(document.getElementById('handle'));const s=getSelection();s.removeAllRanges();s.addRange(r);});
+});
+</script>
+</html>

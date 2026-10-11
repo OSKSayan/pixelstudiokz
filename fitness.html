@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Тренер Дана</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600&display=swap">
+<style>
+:root{--bg:#fbfcf5;--fg:#14210a;--muted:#55604a;--lime:#d8f05a;--dark:#14210a;--line:#e1e6cf;color-scheme:light}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Archivo",system-ui,sans-serif;padding:0 20px}
+[hidden]{display:none!important}
+.w{max-width:1000px;margin:0 auto;padding-block:20px 56px;display:grid;gap:48px}
+nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-weight:600;border-bottom:1px solid var(--line);padding-bottom:16px}
+.tabs{display:flex;flex-wrap:wrap;gap:4px}.tabs button{background:none;border:0;font:600 15px "Archivo";padding:8px 12px;border-radius:6px;cursor:pointer;color:var(--fg)}
+.tabs button[aria-current]{background:var(--dark);color:var(--lime)}
+h1,h2{font-family:"Archivo Black",Impact,sans-serif;margin:0;line-height:1.02;text-wrap:balance}
+h1{font-size:clamp(2.6rem,9vw,5.4rem)}h1 mark{background:var(--lime);color:var(--dark);padding:0 .15em}h2{font-size:2rem}
+.page{display:grid;gap:28px}.page p.lead{max-width:52ch;color:var(--muted);margin:0;font-size:1.1rem}
+.btn{display:inline-block;background:var(--dark);color:var(--lime);padding:16px 26px;border-radius:8px;border:0;font:600 16px "Archivo";cursor:pointer;width:max-content}
+.stats{display:flex;flex-wrap:wrap;gap:32px}.stats b{display:block;font:2.2rem "Archivo Black";font-variant-numeric:tabular-nums}.stats span{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.p{border:1px solid var(--line);border-radius:12px;padding:24px;display:grid;gap:10px;align-content:start}.p.hot{background:var(--dark);color:#f2f6e4;border-color:var(--dark)}.p.hot small{color:var(--lime)}
+.p .s{font:1.6rem "Archivo Black";font-variant-numeric:tabular-nums}.p ul{margin:0;padding-left:18px}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.ba{aspect-ratio:4/5;max-width:100%;border-radius:12px;display:grid;place-items:end start;padding:16px;font-weight:600;background:linear-gradient(160deg,var(--line),var(--lime))}
+.ba:nth-child(even){background:linear-gradient(160deg,var(--dark),#3c5420);color:var(--lime)}
+blockquote{margin:0;border-left:4px solid var(--lime);padding:4px 0 4px 20px;font-size:1.1rem}blockquote cite{display:block;color:var(--muted);font-style:normal;font-size:.95rem;margin-top:8px}
+form{display:grid;gap:12px;max-width:440px}input,select{padding:14px;border:1px solid var(--line);border-radius:8px;font:inherit;background:#fff;color:var(--fg)}
+</style></head><body><div class="w">
+<nav><span>ДАНА · фитнес</span><div class="tabs" id="tabs">
+<button data-p="home" aria-current="page">Главная</button><button data-p="plans">Программы</button><button data-p="gallery">Результаты</button><button data-p="reviews">Отзывы</button><button data-p="book">Запись</button></div></nav>
+
+<section class="page" id="home"><h1>Минус 5 кг за <mark>8 недель</mark> без голодовок</h1><p class="lead">Персональные тренировки в зале и онлайн. Программа питания под ваш график и еженедельные отчёты в Telegram.</p><button class="btn" data-go="book">Бесплатная консультация</button>
+<div class="stats"><div><b>6 лет</b><span>тренирую</span></div><div><b>240+</b><span>клиентов</span></div><div><b>4,9</b><span>средняя оценка</span></div></div></section>
+
+<section class="page" id="plans" hidden><h2>Программы</h2><div class="grid">
+<div class="p"><small>Старт</small><b>Онлайн-план</b><div class="s">15 000 ₸/мес</div><ul><li>Программа тренировок</li><li>План питания</li></ul></div>
+<div class="p hot"><small>Популярное</small><b>Онлайн + сопровождение</b><div class="s">30 000 ₸/мес</div><ul><li>Всё из «Старта»</li><li>Отчёты и связь 7 дней в неделю</li></ul></div>
+<div class="p"><small>Максимум</small><b>Зал, 12 тренировок</b><div class="s">60 000 ₸/мес</div><ul><li>Личные тренировки</li><li>Замеры каждые 2 недели</li></ul></div>
+</div></section>
+
+<section class="page" id="gallery" hidden><h2>Результаты клиентов</h2><p class="lead">Здесь будут фото «до и после» с разрешения клиентов.</p><div class="gal">
+<div class="ba">Айгерим · −6 кг</div><div class="ba">Мадина · −8 кг</div><div class="ba">Алина · −4 кг</div><div class="ba">Сауле · −7 кг</div></div></section>
+
+<section class="page" id="reviews" hidden><h2>Отзывы</h2><div class="grid">
+<blockquote>За два месяца ушло 6 кг, и я впервые не сорвалась.<cite>Айгерим · пример отзыва</cite></blockquote>
+<blockquote>Тренировки онлайн оказались не хуже зала. Дана всегда на связи.<cite>Мадина · пример отзыва</cite></blockquote>
+<blockquote>Наконец-то программа, которая влезает в мой график.<cite>Алина · пример отзыва</cite></blockquote></div></section>
+
+<section class="page" id="book" hidden><h2>Запись на консультацию</h2>
+<form id="f"><input id="n" required placeholder="Ваше имя"><input id="ph" required placeholder="Телефон или Telegram">
+<select id="pl"><option>Онлайн-план</option><option>Онлайн + сопровождение</option><option>Зал, 12 тренировок</option></select>
+<button class="btn">Отправить заявку</button><p id="ok" hidden style="margin:0;font-weight:600">Спасибо! Дана напишет вам сегодня. (демо)</p></form></section>
+
+<small style="color:var(--muted)">Демо: сайт услуг (5 страниц). <a href="index.html" style="color:var(--fg)">← Назад</a></small>
+</div>
+<script>
+const show=id=>{document.querySelectorAll('.page').forEach(s=>s.hidden=s.id!==id);document.querySelectorAll('#tabs button').forEach(b=>b.dataset.p===id?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current'));scrollTo(0,0)};
+document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>show(b.dataset.p));
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>show(b.dataset.go));
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();document.getElementById('ok').hidden=false});
+</script></body></html>

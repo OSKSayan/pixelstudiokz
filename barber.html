@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Барбершоп Бритва</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter+Tight:wght@400;600&display=swap">
+<style>
+:root{--bg:#121212;--fg:#efe9df;--muted:#9a9386;--gold:#d4a24c;--card:#1c1b19;--line:#2e2c28;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Inter Tight",system-ui,sans-serif;padding:0 20px}
+.w{max-width:1000px;margin:0 auto;padding-block:24px 56px;display:grid;gap:64px}
+nav{display:flex;justify-content:space-between;align-items:center}nav b{font:700 1.5rem "Oswald",sans-serif;letter-spacing:.12em}
+h1,h2{font-family:"Oswald",Impact,sans-serif;text-transform:uppercase;margin:0;line-height:1.05;text-wrap:balance}
+h1{font-size:clamp(2.6rem,9vw,5.5rem)}h1 em{color:var(--gold);font-style:normal}h2{font-size:2rem;letter-spacing:.04em}
+.hero{display:grid;gap:20px;border-left:3px solid var(--gold);padding-left:24px}.hero p{color:var(--muted);max-width:48ch;margin:0}
+.btn{display:inline-block;background:var(--gold);color:#121212;padding:14px 26px;text-decoration:none;font:600 15px "Inter Tight";text-transform:uppercase;letter-spacing:.08em;width:max-content}
+table{width:100%;border-collapse:collapse}td{padding:14px 0;border-bottom:1px solid var(--line)}td:last-child{text-align:right;color:var(--gold);font-variant-numeric:tabular-nums;white-space:nowrap}td small{display:block;color:var(--muted)}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.m{background:var(--card);padding:20px;display:grid;gap:4px}.m .ph{height:140px;background:linear-gradient(135deg,#2a2722,#3a342a);margin-bottom:12px;display:grid;place-items:center;font:700 2.5rem "Oswald";color:var(--gold)}.m small{color:var(--muted)}
+</style></head><body><div class="w">
+<nav><b>BRITVA</b><a class="btn" href="#book">Записаться</a></nav>
+<section class="hero"><h1>Стрижка, после которой <em>смотрят</em></h1><p>Мужские стрижки, борода и королевское бритьё. Кофе или чай пока ждёте, запись без звонков.</p><a class="btn" href="#book">Выбрать время</a></section>
+<section style="display:grid;gap:16px"><h2>Услуги</h2><table id="services"></table></section>
+<section style="display:grid;gap:16px"><h2>Мастера</h2><div class="team" id="team"></div></section>
+<section style="display:grid;gap:16px"><h2>Отзывы</h2><div class="team">
+<div class="m"><b>★★★★★</b><span>Лучший фейд в городе, хожу уже год только к Данияру.</span><small>Ерлан · пример отзыва</small></div>
+<div class="m"><b>★★★★★</b><span>Записался онлайн за минуту, ждать не пришлось вообще.</span><small>Максим · пример отзыва</small></div>
+<div class="m"><b>★★★★★</b><span>Королевское бритьё — must have перед свадьбой.</span><small>Нурлан · пример отзыва</small></div>
+</div></section>
+<section id="book" style="display:grid;gap:16px;background:var(--card);padding:28px"><h2>Запись онлайн</h2>
+<form id="f" style="display:grid;gap:12px;max-width:420px">
+<input id="n" required placeholder="Ваше имя" style="padding:14px;background:var(--bg);color:var(--fg);border:1px solid var(--line);font:inherit">
+<input id="ph" required placeholder="Телефон" style="padding:14px;background:var(--bg);color:var(--fg);border:1px solid var(--line);font:inherit">
+<select id="sv" style="padding:14px;background:var(--bg);color:var(--fg);border:1px solid var(--line);font:inherit"><option>Мужская стрижка</option><option>Стрижка + борода</option><option>Моделирование бороды</option></select>
+<button class="btn" style="border:0;cursor:pointer">Записаться</button><p id="ok" hidden style="color:var(--gold);margin:0">Заявка принята! Мастер перезвонит в течение 15 минут. (демо)</p></form>
+<p style="color:var(--muted);margin:0">ул. Достык, 18 · ежедневно 10:00–21:00 · +7 700 000 00 00</p></section>
+<script>
+/* ===== НАСТРОЙКА: вставь сюда ссылки на опубликованные листы Google Таблицы (CSV) ===== */
+const SHEET_SERVICES = ""; // лист «Услуги»: название | описание | цена
+const SHEET_TEAM     = ""; // лист «Мастера»: имя | описание
+
+/* Запасные данные: показываются, если таблица не подключена или недоступна */
+const FALLBACK_SERVICES = [
+  ["Мужская стрижка","45 мин, мытьё и укладка","6 000 ₸"],
+  ["Стрижка машинкой","30 мин","4 000 ₸"],
+  ["Моделирование бороды","30 мин, горячее полотенце","4 500 ₸"],
+  ["Стрижка + борода","75 мин","9 500 ₸"],
+  ["Детская стрижка","до 12 лет","3 500 ₸"]
+];
+const FALLBACK_TEAM = [
+  ["Арман","Топ-барбер, стаж 7 лет"],
+  ["Данияр","Фейды и текстура"],
+  ["Тимур","Борода и бритьё"]
+];
+
+function parseCSV(text){
+  const rows=[];let row=[],cell="",q=false;
+  for(let i=0;i<text.length;i++){const c=text[i];
+    if(q){if(c=='"'&&text[i+1]=='"'){cell+='"';i++}else if(c=='"')q=false;else cell+=c}
+    else if(c=='"')q=true;else if(c==','){row.push(cell);cell=""}
+    else if(c=='\n'||c=='\r'){if(c=='\r'&&text[i+1]=='\n')i++;row.push(cell);rows.push(row);row=[];cell=""}
+    else cell+=c}
+  if(cell||row.length){row.push(cell);rows.push(row)}
+  return rows.slice(1).filter(r=>r[0]&&r[0].trim()); // первая строка — заголовки
+}
+async function load(url,fallback){
+  if(!url)return fallback;
+  try{const r=await fetch(url,{cache:"no-store"});if(!r.ok)throw 0;const d=parseCSV(await r.text());return d.length?d:fallback}
+  catch(e){return fallback}
+}
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+(async()=>{
+  const [sv,tm]=await Promise.all([load(SHEET_SERVICES,FALLBACK_SERVICES),load(SHEET_TEAM,FALLBACK_TEAM)]);
+  document.getElementById('services').innerHTML=sv.map(([n,d,p])=>`<tr><td>${esc(n)}<small>${esc(d)}</small></td><td>${esc(p)}</td></tr>`).join("");
+  document.getElementById('team').innerHTML=tm.map(([n,d])=>`<div class="m"><div class="ph">${esc(n.trim()[0]||"")}</div><b>${esc(n)}</b><small>${esc(d)}</small></div>`).join("");
+  document.getElementById('sv').innerHTML=sv.map(([n])=>`<option>${esc(n)}</option>`).join("");
+})();
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();document.getElementById('ok').hidden=false});
+</script>
+<small style="color:var(--muted)">Демо: лендинг из портфолио. <a href="index.html" style="color:var(--gold)">← Назад</a></small>
+</div></body></html>
