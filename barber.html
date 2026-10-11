@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#121212"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <title>Барбершоп Бритва</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter+Tight:wght@400;600&display=swap">
 <style>
 :root{--bg:#121212;--fg:#efe9df;--muted:#9a9386;--gold:#d4a24c;--card:#1c1b19;--line:#2e2c28;color-scheme:dark}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Inter Tight",system-ui,sans-serif;padding:0 20px}
+html{touch-action:manipulation}a,button,input,select{-webkit-tap-highlight-color:transparent}.btn{transition:filter .15s,transform .15s}.btn:hover{filter:brightness(1.12)}.btn:active{transform:translateY(1px)}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:3px}@media (prefers-reduced-motion:reduce){.btn{transition:none}}
 .w{max-width:1000px;margin:0 auto;padding-block:24px 56px;display:grid;gap:64px}
 nav{display:flex;justify-content:space-between;align-items:center}nav b{font:700 1.5rem "Oswald",sans-serif;letter-spacing:.12em}
 h1,h2{font-family:"Oswald",Impact,sans-serif;text-transform:uppercase;margin:0;line-height:1.05;text-wrap:balance}
@@ -26,10 +27,10 @@ table{width:100%;border-collapse:collapse}td{padding:14px 0;border-bottom:1px so
 </div></section>
 <section id="book" style="display:grid;gap:16px;background:var(--card);padding:28px"><h2>Запись онлайн</h2>
 <form id="f" style="display:grid;gap:12px;max-width:420px">
-<input id="n" required placeholder="Ваше имя" style="padding:14px;background:var(--bg);color:var(--fg);border:1px solid var(--line);font:inherit">
-<input id="ph" required placeholder="Телефон" style="padding:14px;background:var(--bg);color:var(--fg);border:1px solid var(--line);font:inherit">
-<select id="sv" style="padding:14px;background:var(--bg);color:var(--fg);border:1px solid var(--line);font:inherit"><option>Мужская стрижка</option><option>Стрижка + борода</option><option>Моделирование бороды</option></select>
-<button class="btn" style="border:0;cursor:pointer">Записаться</button><p id="ok" hidden style="color:var(--gold);margin:0">Заявка принята! Мастер перезвонит в течение 15 минут. (демо)</p></form>
+<input id="n" name="name" autocomplete="name" aria-label="Ваше имя" required placeholder="Ваше имя, например Арман…" style="padding:14px;background:var(--bg);color:var(--fg);border:1px solid var(--line);font:inherit">
+<input id="ph" name="tel" type="tel" inputmode="tel" autocomplete="tel" aria-label="Телефон" required placeholder="+7 700 000 00 00…" style="padding:14px;background:var(--bg);color:var(--fg);border:1px solid var(--line);font:inherit">
+<select id="sv" name="service" aria-label="Услуга" style="padding:14px;background:var(--bg);color:var(--fg);border:1px solid var(--line);font:inherit"><option>Мужская стрижка</option><option>Стрижка + борода</option><option>Моделирование бороды</option></select>
+<button class="btn" style="border:0;cursor:pointer">Записаться</button><p id="ok" role="status" aria-live="polite" hidden style="color:var(--gold);margin:0">Заявка принята! Мастер перезвонит в течение 15 минут. (демо)</p></form>
 <p style="color:var(--muted);margin:0">ул. Достык, 18 · ежедневно 10:00–21:00 · +7 700 000 00 00</p></section>
 <script>
 /* ===== НАСТРОЙКА: вставь сюда ссылки на опубликованные листы Google Таблицы (CSV) ===== */

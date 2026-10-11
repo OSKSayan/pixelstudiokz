@@ -1,10 +1,11 @@
 <!doctype html>
-<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#fbfcf5"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <title>Тренер Дана</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600&display=swap">
 <style>
 :root{--bg:#fbfcf5;--fg:#14210a;--muted:#55604a;--lime:#d8f05a;--dark:#14210a;--line:#e1e6cf;color-scheme:light}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 "Archivo",system-ui,sans-serif;padding:0 20px}
+html{touch-action:manipulation}a,button,input,select{-webkit-tap-highlight-color:transparent}.btn{transition:filter .15s,transform .15s}.btn:hover{filter:brightness(1.25)}.btn:active{transform:translateY(1px)}.tabs button:hover:not([aria-current]){background:var(--line)}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--dark);outline-offset:3px}@media (prefers-reduced-motion:reduce){.btn{transition:none}}
 [hidden]{display:none!important}
 .w{max-width:1000px;margin:0 auto;padding-block:20px 56px;display:grid;gap:48px}
 nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-weight:600;border-bottom:1px solid var(--line);padding-bottom:16px}
@@ -45,15 +46,15 @@ form{display:grid;gap:12px;max-width:440px}input,select{padding:14px;border:1px 
 <blockquote>Наконец-то программа, которая влезает в мой график.<cite>Алина · пример отзыва</cite></blockquote></div></section>
 
 <section class="page" id="book" hidden><h2>Запись на консультацию</h2>
-<form id="f"><input id="n" required placeholder="Ваше имя"><input id="ph" required placeholder="Телефон или Telegram">
-<select id="pl"><option>Онлайн-план</option><option>Онлайн + сопровождение</option><option>Зал, 12 тренировок</option></select>
-<button class="btn">Отправить заявку</button><p id="ok" hidden style="margin:0;font-weight:600">Спасибо! Дана напишет вам сегодня. (демо)</p></form></section>
+<form id="f"><input id="n" name="name" autocomplete="name" aria-label="Ваше имя" required placeholder="Ваше имя, например Айгерим…"><input id="ph" name="contact" autocomplete="tel" aria-label="Телефон или Telegram" required placeholder="+7 700 000 00 00 или @ник…">
+<select id="pl" name="plan" aria-label="Программа"><option>Онлайн-план</option><option>Онлайн + сопровождение</option><option>Зал, 12 тренировок</option></select>
+<button class="btn">Отправить заявку</button><p id="ok" role="status" aria-live="polite" hidden style="margin:0;font-weight:600">Спасибо! Дана напишет вам сегодня. (демо)</p></form></section>
 
 <small style="color:var(--muted)">Демо: сайт услуг (5 страниц). <a href="index.html" style="color:var(--fg)">← Назад</a></small>
 </div>
 <script>
 const show=id=>{document.querySelectorAll('.page').forEach(s=>s.hidden=s.id!==id);document.querySelectorAll('#tabs button').forEach(b=>b.dataset.p===id?b.setAttribute('aria-current','page'):b.removeAttribute('aria-current'));scrollTo(0,0)};
-document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>show(b.dataset.p));
-document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>show(b.dataset.go));
+const go=id=>{history.pushState(null,'','#'+id);show(id)};document.querySelectorAll('[data-p]').forEach(b=>b.onclick=()=>go(b.dataset.p));const fromHash=()=>show(document.getElementById(location.hash.slice(1))?.classList.contains('page')?location.hash.slice(1):'home');addEventListener('popstate',fromHash);fromHash();
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
 document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();document.getElementById('ok').hidden=false});
 </script></body></html>
