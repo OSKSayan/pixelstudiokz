@@ -57,6 +57,10 @@ footer{color:var(--muted);font-size:14px}
 @starting-style{[role="status"]{opacity:0;transform:translateY(4px)}}
 @media (prefers-reduced-motion:reduce){.btn,button,.work,[role="status"]{transition:opacity 150ms ease,color 150ms ease}.btn:active,button:active{transform:none}.rise{animation:fade 200ms ease both}@keyframes fade{from{opacity:0}}}
 @media (hover:hover) and (pointer:fine){.work:hover{transform:translateY(-3px)}}.work:active{transform:scale(0.985)}
+.price .sum s{font:400 1rem var(--body);color:var(--muted);margin-left:6px}
+.promo{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;background:var(--accent);color:var(--accent-fg);padding:16px 20px;border-radius:12px}
+.promo b{font:500 1.15rem var(--display)}
+.tag{font:600 14px var(--body);color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:6px 14px}
 </style>
 
 <div class="wrap">
@@ -64,25 +68,26 @@ footer{color:var(--muted);font-size:14px}
     <div class="eyebrow rise">// сайты для малого бизнеса</div>
     <h1 class="rise">Сайт, который приводит <span>клиентов</span>, за 3–7 дней</h1>
     <p class="rise">Делаю лендинги и сайты-визитки для кофеен, барбершопов, тренеров и магазинов. Удобно с телефона, быстро грузится, кнопка «Написать в WhatsApp» на каждом экране.</p>
-    <div class="row rise"><a class="btn" href="https://t.me/pixelstudiokz" target="_blank" rel="noopener">Написать мне</a></div>
+    <div class="row rise"><a class="btn" href="https://t.me/pixelstudiokz" target="_blank" rel="noopener">Написать мне</a><span class="tag">−30% первым 5 клиентам</span></div>
   </header>
 
   <section>
     <h2>Примеры работ</h2>
     <div class="works">
-      <a class="work" href="coffee.html"><div class="bar"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>zerno-coffee.kz</span></div><div class="shot s1">Зерно<br>кофейня</div><div class="meta"><b>Сайт-визитка · кофейня «Зерно»</b><small>1 страница: о нас, меню, контакты, карта · от 15 000 ₸</small></div></a>
-      <a class="work" href="https://osksayan.github.io/britva-react/"><div class="bar"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>britva-barber.kz</span></div><div class="shot s2">BRITVA<br>barbershop</div><div class="meta"><b>Лендинг · барбершоп «Бритва»</b><small>Онлайн-запись: календарь, мастер, время · от 25 000 ₸</small></div></a>
-      <a class="work" href="fitness.html"><div class="bar"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>trener-dana.kz</span></div><div class="shot s3">Минус 5 кг<br>за 8 недель</div><div class="meta"><b>Сайт услуг · фитнес-тренер</b><small>5 страниц: программы, результаты, отзывы, запись · от 45 000 ₸</small></div></a>
+      <a class="work" href="coffee.html"><div class="bar"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>zerno-coffee.kz</span></div><div class="shot s1">Зерно<br>кофейня</div><div class="meta"><b>Сайт-визитка · кофейня «Зерно»</b><small>1 страница: о нас, меню, контакты, карта · от 10 500 ₸</small></div></a>
+      <a class="work" href="https://osksayan.github.io/britva-react/"><div class="bar"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>britva-barber.kz</span></div><div class="shot s2">BRITVA<br>barbershop</div><div class="meta"><b>Лендинг · барбершоп «Бритва»</b><small>Онлайн-запись: календарь, мастер, время · от 17 500 ₸</small></div></a>
+      <a class="work" href="fitness.html"><div class="bar"><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><span>trener-dana.kz</span></div><div class="shot s3">Минус 5 кг<br>за 8 недель</div><div class="meta"><b>Сайт услуг · фитнес-тренер</b><small>5 страниц: программы, результаты, отзывы, запись · от 31 500 ₸</small></div></a>
     </div>
     <small class="eyebrow">Это демо-проекты: так может выглядеть ваш сайт.</small>
   </section>
 
   <section>
+    <div class="promo"><b>−30% первым 5 клиентам</b><span>Скидка в обмен на отзыв и разрешение показать ваш сайт в портфолио.</span></div>
     <h2>Цены</h2>
     <div class="prices">
-      <div class="price"><b>Визитка</b><div class="sum">от 15 000 ₸</div><p>1 страница: о вас, услуги, контакты, карта.</p><a href="coffee.html" style="color:var(--accent)">Смотреть пример →</a></div>
-      <div class="price"><b>Лендинг</b><div class="sum">от 25 000 ₸</div><p>Продающая страница с отзывами, ценами и формой заявки.</p><a href="https://osksayan.github.io/britva-react/" style="color:var(--accent)">Смотреть пример →</a></div>
-      <div class="price"><b>Сайт услуг</b><div class="sum">от 45 000 ₸</div><p>До 5 страниц, галерея, запись или каталог.</p><a href="fitness.html" style="color:var(--accent)">Смотреть пример →</a></div>
+      <div class="price"><b>Визитка</b><div class="sum">от 10&nbsp;500 ₸ <s>15&nbsp;000 ₸</s></div><p>1 страница: о вас, услуги, контакты, карта.</p><a href="coffee.html" style="color:var(--accent)">Смотреть пример →</a></div>
+      <div class="price"><b>Лендинг</b><div class="sum">от 17&nbsp;500 ₸ <s>25&nbsp;000 ₸</s></div><p>Продающая страница с отзывами, ценами и формой заявки.</p><a href="https://osksayan.github.io/britva-react/" style="color:var(--accent)">Смотреть пример →</a></div>
+      <div class="price"><b>Сайт услуг</b><div class="sum">от 31&nbsp;500 ₸ <s>45&nbsp;000 ₸</s></div><p>До 5 страниц, галерея, запись или каталог.</p><a href="fitness.html" style="color:var(--accent)">Смотреть пример →</a></div>
     </div>
   </section>
 
